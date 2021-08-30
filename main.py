@@ -1,11 +1,16 @@
 import discord
 
-key = "ODgxMjY2OTc0MjA0NzY4MzY2.YSqV0w.YVcKJIE_HIAI4uvP3_JqpTQ4xNI"
+
+try:
+    with open('token.txt') as f:
+        token = f.read()
+except FileNotFoundError:
+    token = input('No token.txt found. Enter token here > ')
+
 
 class FileWatcherClient(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}! Ready to go!')
-        print(f'{self.emojis}')
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -17,4 +22,4 @@ class FileWatcherClient(discord.Client):
 
 print('Starting')
 client = FileWatcherClient()
-client.run(key)
+client.run(token)

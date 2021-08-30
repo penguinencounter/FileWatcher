@@ -12,7 +12,7 @@ class WatchedFile:
         try:
             os.mkdir(f'downloads/{self.folder_name}')
         except FileExistsError:
-            print('Directory already exists. Is something wrong?')
+            print('Directory already exists.')
         self.last_sum = ''
         self.last_checked = time.time()  #Linux
         self.last_status = 200
